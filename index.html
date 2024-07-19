@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>functional programming</title>
+
+</head>
+<body>
+    <script>
+        //not pure function
+        "it modifies the external variables and it doesnt return  the same  value what argument passed "
+        let name="junaid"
+        function greeting() {
+            console.log(`hello ${name}`);
+            
+        }
+        greeting()
+
+        //pure function
+        "it is safer and better to use there are no side effect to use this. it only returns the same what the argument pass and it only depends on it input arguement"
+        function greet(name) {
+            return `hello ${name}`
+        }
+        greet("junaid")
+        console.log(greet("junaid"));
+        //closure function
+        "when we put functions into functions and call all the function one by one and we put variable  in every nested function and we didnt mentioned any variable in one function so the function will return the var of its parent function and it return the closest reference of its lexical enviorment"
+      function x() {
+        let a=7
+        
+        function y() {
+            let a=2
+        }
+        y()
+            function z() {
+                console.log(a);
+            }
+            z()
+       
+      }
+      x()
+     //infinite currying
+     "this is also called recurion "
+     function add(a) {
+        return function(b) {
+            if (b) {
+              return add(a+b) 
+            }
+            return a   
+        }   
+     }
+     console.log(add(4)(1)(2)());
+   //currying 
+   function curryGreet(greeting1) {
+         return function(name) {
+            return function(name1) {
+               return `${greeting1} ${name} ${name1}`
+                
+            }
+         }
+   }
+   let res=curryGreet("ciao")
+   let pes2=res("junaid")
+   console.log(pes2("zayn"))
+   //immutation 
+   "immutation returns the newly changed object and the good method which we use in mutation is map and filter"
+   let oldCities=["delhi","jaipur","bombay","banglore"]
+   newCities=oldCities.map((city)=>{
+    if (city=="bombay") {
+        return "mumbai"
+    }if (city=="banglore") {
+        return "bangluru"
+    }
+   })
+   console.log(newCities);
+   
+   //Mutation
+   "mutation changes the orignal object and the good method which we use in mutation is forEach"
+   let cities=["delhi","bombay","banglore"]
+   cities[1]="mumbai"
+   console.log(cities);
+   //algorithm complexity
+   algorithmDefination="steps of any work to do is called algorithm"
+   algorithmComplexity="two types of complexity time and space"
+   timeComplexity="number of line or loops execute"
+   spaceComplexity="the amount of input size of algorithms"
+   asymptoticNotation={
+    CalculateValueFormula:"f(n)=5n**2+6n+122",
+    bigoNotation:"this informs the worst case of solution for the data",
+    thetaNotation:"this informs the average case of solution for the data",
+    omegaNotation:"this informs the best case of solution for the data"
+   }
+   asymptoticAnalysis="identify the best data structure or algorithms solutions for problems "
+//ECMA script language types
+ECMA="boolean,undefined,null,string,symbol,number and object"
+//data types in js
+primitiveDataTypes="all ECMA apart from object"
+ReferenceDataTypes="array,object,function,Dates"
+//what is symbol
+Symbol="it makes new string"
+//let sym1=Symbol("this is good")
+//let sym2=Symbol("this is good")
+//what is bigInt
+bigInt="it stores largest number values by putting n after number or before number put bigInt(number)"
+//what is undeclared,undefined,uninitialize
+"undeclared=never ever created"
+"undefined=created without have any value like(let x;)"
+//what is math.sign
+"math.sign identify if a number is negative or positive"
+//difference between == , === and  object.is
+let threeEquals="compare type and values both"
+let twoEquals ="compare only value"
+let objectis="it compares type and value both"
+
+function typer() {
+        "== is only check values and this is also called coevercion because it automaticaly change number into string and add as string. but this is not the right way to code . always remember that convert both types same then compares with ==  "
+        const x="1"
+        const y=1
+        if (x==y) {
+            return x+y
+            
+        }
+        return 0
+    }
+    console.log(typer());
+    function typer1() {
+        "=== is check values and type . and this is strict and it doesnt do coevercion"
+        const x="1"
+        const y=1
+        if (x===y) {
+            return true
+            
+        }
+        return 0
+    }
+    console.log(typer1());
+//reference data and primitive data
+" referenceValues=if we copy the value of the orignal variable to other empty variable and then if we update the orignal variable so all copy and orignal variable will change and  gives the updated version in all variables.its saves in heap memory thats why it is dynamicaly change"
+   let e={name:"junaid"}
+   let f=e
+   e.name="hello how are u"
+   console.log("value of e",e);
+   console.log("value of f",f);
+
+"primitiveValues=if we copy the value of the orignal variable to other empty variable and then if we update the orignal variable despite the copy variable will  gives the orignal value bcoz it copied the orignal and orignal value gives the updated version .primitive data saves memory in stack"
+let pv1=100
+let pv2=pv1
+pv1=199
+console.log(pv1);
+console.log(pv2);
+//delete key
+let deleteKey="delete .{}"
+//toLowerCAse
+let toLowerCase="it written all alphabets in lower case"
+//toUpperCase
+let toUpperCase="it written all alphabets in upper case"
+//object oriented and object based
+let objectOrientedLanguage="a language where we can build classes and objects"
+let objectbasedLanguage="a language where we cant build classes and objects but we can use allready built classes and objects"
+//replace method ("","")
+let replace="it replaces first element only"
+//what is regEx
+let regEx="this works in  string only "
+//error
+let error ="it creates error message error()"
+//new 
+"its only use in function ,date,object,error,regx"
+"its not use in boolean , number and string"
+"it starts from new object"
+//coercion
+"it converts datatype one to another automatically"
+//type conversion
+"convert a datatype to the another data EXample=number to string or variable to other variable"
+//explicit coeversion
+"it converts anything directly by methods"
+//implicit coeversion
+"it converts without methods"
+//destructuring assignments
+"it breaks the array in different variables example= [a,b,..rest]"
+//spread operators
+"it converts to array in objects {...var}"
+//toPrimitive operator
+"it converts to objects into string , number, boolean"
+//valueof method
+"it converts string into object"
+//recursion
+"a function calls himself again and again"
+function factorial(item) {
+    console.log(item);
+    if (item<=10) {
+       return factorial(item+1)
+        
+    }
+}
+let data=5
+console.log(factorial(data))
+//direct recursion vs indirect recursion
+let indirectRecursion="when we call funtion in another function and it wont stop untill condition is done "
+
+let money=100;
+let totalApple=0
+function buyApple(x) {
+    
+    if (x>0) {
+        console.log("i have" ,x,"RS",totalApple);
+        buyMore(x)
+    }else{
+        console.log("i dont have more money",totalApple);
+    }
+}
+
+function buyMore(x) {
+    totalApple++
+    buyApple(x-10)
+    
+}
+buyApple(money)
+
+let directRecursion="when we call function into own function"
+function papaya() {
+    papaya()
+}
+//head recuresion
+function test(x) {
+    console.log(x);
+    if (x>5) {
+        test(x-1)
+    }
+}
+let num=5
+test(num)
+"because upper opperation make x comes first thetswhy it brings 5,4,3,2,1"
+//tail recursion
+function test(x) {
+    if (x>5) {
+        test(x-1)
+    }
+    console.log(x);
+}
+let num1=5
+test(num1)
+"because lower operation makes x comes lower first like 1,2,3,4,5"
+// what is debugger
+"call function step by step though click numbervise"
+//dynamic type conversion
+"it only concat when we put + symboll like 2+string(3) so ans will be string23 other wise the same values get ans in number"
+function convert() {
+    let x=2
+    let y="2"
+    if (x==y) {
+        return true
+        
+    }
+    return 0
+}console.log(convert());"so in this d=function we understood how coercion changeg y(syting)value in number automatically "
+//difference between == vs ===
+"== only matches the value of two variables like it must be true if 2==string(2)  and its  matches primitive values and reference alse but dont use references value like array , object ,function ,dates and true or false so these are bad ways to code and u should l=know the types that is best way to code and === reads the type also like it must be false 2===string(2) and if you know the type so use double equals more beacuase its faster than tripple equals and better"
+// typescript and flow 
+"typescript is a language and flow is checker and makes code faster and smarter"
+//defference between var , let and const
+"these three cant work upper side the variable "
+"var= is use for global variable and if we put value in var and in the block so it will work outside the block also and var variable can be change to another var variables outside the block but it won't work outside the function,var can change the variable value "
+var y=0
+var y=9
+console.log(y);
+"let =is use for local variable and the better way of use let in block, let doesn't change the value of variable but we can update the variable"
+//let qw=2       =>  cant change value of variable
+//let qw=3
+
+let don="teacher"  //=>can update the variable
+don="sir"
+console.log(don);
+"const=we cant change the value in const and cant update the variable. but we can change element,and it would be best way to code if we use const variable in primitive values "
+//const don="teacher"
+//don="sir"
+
+//const lap;  => we cant use this in const
+
+const teacher1=["kyle","ram"]  //can change elements 
+teacher1[1]="jk"
+console.log(teacher1);
+//scope
+"scope is the variable which we can use inside and outside the function"
+//type of scope
+"block scope=we cant run the variables outside the block{}"
+"function scope = we cant run the variables outside the function "
+"global scope =we can run variables outside the function and inside in the function"
+// let , const and var variable facts
+"when we put only (let ,const and var) variabe below the function or console log then the variable won`t work and variable would be undefined and if we put variable upperside the function so the variable works"
+"var are initialized with undefined and let , const not"
+//what is hoisting
+"if we put function in var (variable) it wont works "
+""
+console.log(greet2);
+var greet2 = function() {
+    console.log("good morning");
+}
+//modules
+"when our code grows bigger in single files so we can export that code to another files to maintain the code and reusable"
+// two types of data structure linear and non linear 
+"linear structure= elements comes sequence wise example-:stack,que and array"
+"non-linear structure=elements comes from non-sequence wise example-: tree and graph"
+//stack and 
+"stack's main operations are pop and push and it changes only last element of an array"
+//que
+"operation of que is first element in first element out in array"
+//stack and heap memory
+"stack memory = it is use in primitive type "
+"heap memory = it is use in non primitive type"
+//isEmpty() 
+"isEmpty = check that is array is empty or any element"
+//size()
+"size=check that number of eliment in array"
+//peek()
+"peek =it allows know what is the peek element(last element of an array)"
+//how javascript execution or compiler works
+"java script runs the code in browser"
+"first when we write a code it goes into the parser parser check the every single thing in code like every syntext . and then if parser catches anything wrong in the code then parser stops or interept the code imideatly and sign error,and then if everything is right in the code so parser send the code in AST (abstract syntax tree) it check the code step by step like first function the if tatement then block then return then code converts in machine code and the finally code will run."
+//whar is IIFE
+"this is use for avoid global polution and invoke the function immedeatly and put ; after every iife"
+"named IIFE=>"
+//(function chai() {
+   // console.log("hello IIFE");
+//})();
+
+//"simple IIFE"
+//((name)=>{
+//console.log("hello simple iife");
+//})("hitesh")
+
+//function declaration vs function expression.
+"one key difference and a function declarations is that function expressions should be in variable and it can be anonymous ,while function declaration must have a name like we give the name after function is function declaration and if we put that function in variable without any name so it will become function expression."
+//function expression
+let sum1=function(a,b) {
+    return a+b;
+}
+
+console.log(sum1(3,5));
+//function declaration
+function declaration(a,b) {
+    return a+b    
+}
+console.log(declaration(9,8));
+// anonymous function 
+"a function dont have any name after function is called anonymous function"
+//named function expression
+"the function in the variable and also have their name after function and this is a best way to code"
+let sum2= function summ() {
+    
+}
+console.log();
+//{} what is this
+"if u write {} in between u have to write compulsary write return"
+"example"
+let muk=(input)=>{return input*2}
+//let muk1=(input)=>{input*2}    //this will wrong
+//this. keyword
+"we can use this. keyword only in objects not i function like example below"
+function chai() {  //this wont work
+    let username="hitesh"
+    console.log(this.username);
+}
+chai()
+//arrow function 
+"arrow function is a global function  and arrow function doesnt hoist like other function . u can call function() upperside or below the function and that will work. this is called hoisting . but if u write arrow function then it wont work. u have to call the function() below  the function ,otherwise it called before initialize error u cant call arrow function to ther upperside of function. and if u write the object and in the object u write a myfunction named function and property of myfunction is in function form so u can use this. keyword but if u write myfunction named function in arrow function form so u cant use this. keyword "  
+//this. keyword in arrow vs normal function
+"normal function"
+let olbj={
+    value:20,
+    myfunction: function() {
+        console.log(this.value);
+    }
+} 
+olbj.myfunction()
+"arrow function"
+let olbj1={
+    value:20,
+    myfunction: ()=> {
+        console.log(this.value);
+    }
+} 
+olbj1.myfunction()
+
+// syntax in arrow function
+let qxm=()=>{
+  console.log("hey");
+}
+qxm()
+// arrow function doesnt hoisting
+// "example"
+// sayhello()
+// let sayhello=()=>{
+//     console.log("hey");
+// }
+
+//object arrow function
+let x9={
+ name:"junaid",
+ id12:()=>{
+    return "software developer"
+    
+ }
+}
+console.log(x9.id12());
+//which is the best between these named function declaration,named function expression and anonymous function expression
+"named function declaration is better than named function expresssion and anonymous function"
+//what is class in js
+"class is the advance function"
+//class
+class Product{
+    constructor(itemName,price,discount,ProductCode){
+        this.itemName=itemName;
+        this.price=price;
+        this.discount=discount;
+        this.ProductCode=ProductCode;
+    }
+}
+// new call the constructor automaticaly
+let pensil=new Product("pensil",20,2,"p10");
+//class expression
+Product1=class{
+    constructor(itemName,price,discount,ProductCode){
+        this.itemName=itemName;
+        this.price=price;
+        this.discount=discount;
+        this.ProductCode=ProductCode;
+    }
+}
+let chair=new Product1("chair",20,2,"p10");
+//get and set method
+Product2=class{
+    constructor(itemName,price,discount,ProductCode){
+        this.itemName=itemName;
+        this.price=price;
+        this.discount=discount;
+        this.ProductCode=ProductCode;
+    }
+    get getDiscountValue(){
+        return this.discount
+    }
+    set setDiscountValue(value){
+        return this.discount=value
+    }
+    
+}
+ chair2=new Product2("chair",20,2,"p10");
+ console.log(chair.setDiscountValue=399)
+ console.log(chair2.getDiscountValue);
+console.log(chair2.getDiscountValue);
+console.log(chair2.getDiscountValue);
+//what is extend in class  
+"extends creats child node of class parents"
+
+//another class example
+class railwayForm{
+    constructor(givename,trainno){
+        console.log("constructor called..."+ givename + trainno);
+      this.name=givename
+      this.trainno=trainno
+    }       
+    submit(){
+        //alert(this.name+" form submitted for train:"+ this.trainno)
+    }
+    cancel(){
+       // alert(this.name+";this form is cancelled for train:"+ this.trainno)
+    }
+}
+// create and fill a form for harry
+let harryForm= new railwayForm("harry",145316)
+
+// create & fill a form for rohan
+let rohanForm1=new railwayForm("rohan",123444)
+let rohanForm2=new railwayForm("rohan",123422)
+
+
+harryForm.submit()
+rohanForm1.submit()
+rohanForm2.submit()
+rohanForm1.cancel()
+//what is bind method
+"by this bind method , we can bind an object to a common function and it creates the function so we have to call after asign to new variable() "
+let samw={
+    game:"name1",
+    school:"rsv1"
+    
+}
+let samw1={
+    game:"name2",
+    school:"rsv2"
+    
+}
+let samw2={
+    game:"name3",
+    school:"rsv3"
+    
+}
+function featureed() {
+    console.log(`hello my name is${this.game} and i leave in ${this.school}`);
+}
+let you1=featureed.bind(samw)
+let you2=featureed.bind(samw1)
+let you3=featureed.bind(samw2)
+
+console.log(you3());
+//this keyword identify the object of its parental class like
+let youtuber={
+    name: "thapatechnical",
+    content: "program",
+  getIntro: function(params) {
+    
+        console.log(this.name);
+}
+}
+youtuber.getIntro()
+
+//prototypes
+"it attaches your orignal object to another objects and methods .and if we use like object1.__proto__=object2 so we can also call object2 and it can shows property of object1 because when we attached both object so both obhects are same now so if we call object2.name so it can give name of object1 , and we can also attach everything after (=)this like object prototypes is also a behavior that checks all parents element"
+let a={
+    name:"harry",
+    language:"javascript"
+    
+}
+
+let p={
+  
+    run:()=>{
+        alert("run")
+    },
+    sun:"run junaid"
+    
+}
+ a.__proto__=p
+ console.log(a.sun);
+//a.run()
+//what are objects 
+"everything is object like array,function ,string"
+
+    let poi=[1,2,3,4,5,""]
+    let mm=poi.map((check)=>{
+      if (check===4) {
+        return true
+      }
+      
+    })
+    console.log(mm);
+    function typer() {
+        "== is only check values"
+        const x="1"
+        const y=1
+        if (x==y) {
+            return x+y
+            
+        }
+        return 0
+    }
+    console.log(typer());
+    function typer1() {
+        "=== is check values and type "
+        const x="1"
+        const y=1
+        if (x===y) {
+            return true
+            
+        }
+        return 0
+    }
+    console.log(typer1());
+    //what is que
+    "que is linear data structure like array,stack,and string . when elements comes in sequence vise is called linear data structure.when we talk about que so fist element inn and first element out. thes eare two types of que enque and dque"
+    "enque=add item in que"
+    "deque=remove item first"
+    const maxItems=5
+    let queue=[]
+   function enque(newVal){
+    if (maxItems<=queue.length) {
+        alert("element is full")
+    }else{
+        queue.push(newVal)
+    }
+       
+    }
+    function display2() {
+        console.log(queue);
+    }
+    enque(10)
+    enque(10)
+    enque(19)
+    enque(19)
+    
+    
+
+    function deque() {
+        
+        queue.shift()
+        
+    }
+    deque()
+    deque()
+      
+    display2() 
+              //what is data structure
+              "there are two types of data structure linear and non linear . non linear data structure is when elements comes non-sequence vise. there are two types of non-linear data structure tree and graph , its gives code in details"   
+//what is imerative and declerative 
+"imperative = is when u write code step by step like forLoops. and its shows that how u write the code "
+"declarative= when u dont know the steps behind this but it declare and give outcome like all methods map,filte and many and it gives less details in code . "
+  
+//what is transpiling in js
+"when the some part of es6 code doesnt works bcoz it is latest version so that part of code converts into older version (es5) and then code works properly so this process is handling by transpiling there are three types of transpiling babel,traceur and closure"
+//what is babel
+"babel is a javascript compiler it converts the latest version of code into older version so the code works properly bcoz browser sometimes browser not supports the code "
+//what is template literals
+"when we concate multiple variable in in string"
+"example"
+//`my name is ${name} and i leave in ${country}`
+//tagged template
+"tagged template is advance form of template literals . tags allows you to parse template literals with function . the first arguement are related to the contains an array of string values. the remaining arguements are related to the expression, in the end , your function can returns you manipulated string and we will allways call tagged function without ()"
+"this is the example"
+let person9={
+    name:"junaid",
+    company:"levis",
+    course:"js",
+    website:"www.mySirg",
+    city:"jaipur"
+}
+function person9check(arr,...arg) { //or (arr,name,company,city)
+    console.log(`${arr[0]} ${arg[0]} ${arg[2]}`);
+}
+let qmk=person9check `i am ${person9.name} and my company is ${person9.company} and i live in ${person9.city}`
+//what is trim start
+"trim.start() trims the space starting the string like  "
+"example"
+let str7="   apple"
+let x99=str7.trimStart()
+console.log(x99)
+//what is trim start
+"trim.End() trims the space end of the string like  "
+"example"
+let str8="   apple  "
+let x998=str8.trimEnd()
+console.log(x998)
+//what is string padding
+"string padding adds the new element and adds the length in old string"
+"example of padstart"
+let string11="orange"
+let qa=string11.padStart(10,"k")
+console.log(qa);
+"example of padEnd"
+let string111="orange"
+let qar=string11.padEnd(10,"k")
+console.log(qar);
+// array destructuring example
+let qoo=[1,2,3,4,5]
+let [,,...pest]=qoo
+console.log(pest);
+//object destructuring example 
+"name would be same when we destructuring the object like {l,a}={l:2,a:1}"
+//example
+let {op,po}={op:1,po:2}
+console.log(op,po);
+//another example
+let iop={
+    a:1,
+    b:[500,5000],
+    c:3
+};
+console.log({a,b,b:[w,y],c}=iop)
+//spread operator example
+let io=[1,3,4,5,5]
+let objq=[...io]
+console.log(objq);
+
+function lwf(v1,v2,v3) {
+    return v1+v2+v3
+    
+}console.log(lwf(...io));
+// object spread operator example
+
+let lop={
+    name:"junaid",
+    company:"Company xyz",
+    address:"xyz"
+}
+"if i write ...operator before their property so property will update and if i write ...operator after their property so property will remain same example below "
+console.log({...lop,name:"john",company:"abc"});
+console.log({name:"john",company:"abc",...lop});
+ 
+//this is another example
+function ptp() {
+    return {a:1,b:2,c:3,d:4};
+}
+console.log({a,b,d}=ptp())
+console.log(d);
+
+//what is client side vs server side
+"client side request to server side for html or any kind of page then server give the page to the client and server side speed depends on yours internet and how many client request on perticular page. so the time taken during the server side gives u the page inbetween loading onn . and when serverside gives the page loading off there are few way to write asynchonous code are-:Async/await,callbacks,promises"
+
+//what is assynchronous programming
+"it helps to send or call many requests in one  time to the server side and it loads multiple request or works in one time and meaning of async is not blocking the code"
+"there are two types of async / await . when server takes time then u can use this for like hold this function with asyn/await and give me the next function Data and the both function works together it saves the time -example below "
+"so this way is most usefull"
+ //let yu=10;
+ //let kj=20;
+ //let result=a+b;
+ //async function gettData() {
+   // let resultFromServer=await fetch(
+    //"https www.ekfkfkgkgglxlxll.com/post"
+ //)
+ //console.log(resultFromServer);
+ //}
+//gettData()
+ //console.log(result);
+
+"this way is least usefull . so there are 3 methods to do this .then is use for when function works properly , .catch is use for when function gives the error and "
+//  fetch(https://sonjpskddkf.typicode.com/posts).then(data)=>{
+//     console.log(data);
+//  }.catch(data)=>{
+//     console.log(data);
+//  }
+//what is synchronous programming
+"it helps to send or call only one request in one time to the server side and it loads one request or work in one time then another. and when you call a function that performs a long action, it returns only when thw action has finished so that it can return the result. this stops the program  for the time the action takes. bcoz function is in the block when block fineshes the run another things"
+//what is ajax
+"ajax stands for asynchronous javaScript and xml"
+"so when client request to server for data or file then (xmlhttprequest) send request to the server and it goes into the background of the server and fetch only text file xml data and json data without any loading or refreshing the page"
+"ajax do no page reload and refresh"
+"so chatting is part pf ajax bcoz we without ajax we need to reload all chats again nd again"
+//find method
+"it is like filter method but one difference is filter method can return more than one element but find method only returns first element of array"
+let olm=[1,2,3,4,5,56,8]
+let wt=olm.find((x)=>{
+      if (x>8) {
+        return x
+      }
+})
+console.log(wt);
+//findIndex method
+"its same as find method but it returns first element index"
+let olmq=[1,2,3,4,5,56,8]
+let wtw=olmq.findIndex((x)=>{
+      if (x>8) {
+        return x
+      }
+})
+console.log(wtw);
+//flat method
+"it converts the nest array into normal array and if one or more depth array so write the number of depth or infinity in argument so the it converts in normal array "
+let lio=[2,3,,[45],[54]]
+console.log(lio.flat());
+let liow=[1,2,,[34,[45]],[5]]
+console.log(liow.flat(2));
+//flat map method
+"first we use map method for array to build nested array in normal array then we use flat method"
+let yui=["jsunfjfk","skdlf"]
+let rt=yui.map((i)=>{
+    return i.split(" ")
+
+})
+console.log(rt.flat());
+//what is generators and iterators
+"we can pause the function and run the function in generatore .it returns the best sequencewise element and when elements complete then its will return done otherwise it returns false "
+function* kiko() {
+    for(let i=0;i<100;i++){
+        yield i
+    }
+    
+}
+
+let kiki=kiko()
+kiki.next()
+console.log(kiki.next()); 
+function* numGenerator(){
+    yield 1;
+    yield 2;
+    yield 3;
+    yield 4;
+}
+let byt=numGenerator()
+byt.next();
+byt.next();
+console.log(byt.next());"and if we put .value so it will show the value only"
+
+
+
+"this is iterators example"
+//  let numberrr=[100,5,3,4,5,6]
+//  let it1= numberrr[Symbol.iterator]();
+//  it1.next()
+//  it1.next()
+//  it1.next()
+//  console.log(it1.next());
+
+//what is execution context ,local memory and global memory.
+"execution context run and execute the function line by line in the function block  and then its sends to the local memory it saves  like array:[1,2,3] and output:[2,4,6] and then when it returns .it sends to the global memory and global memory takes only what it call outside the function like function copyArrayAndmultiplyBy2(), myArray:[1,2,3] and result: copyArrayAndmultiplyBy2(array)and local memory cleans and vanished all that loacal memory sent to the global memory. so basicaly local memory takes what inside the function and global memory takes outside the function . and and if we write another function so the previous function vanished or clean in local storage but if we write in closure form or asynchronous like 2 or returning a function form another function so local storage have to store all function "
+function copyArrayAndmultiplyBy2(array) {
+    let output=[]
+    for(let i=0;i<array.length;i++){
+      output.push(array[i]*2)
+    }
+    return output
+    
+}
+let myArray=[1,2,3]
+let result=copyArrayAndmultiplyBy2(myArray)
+//what is higher order function
+"when a function takes a function as an argument "
+// what is wxample of higher order function
+function copyArrayAndManipulate(array,instruction) {
+    let output=[]
+    for(let i=0;i<array.length;i++){
+  output.push(instruction(array[i]))
+    }
+    return output
+}
+function multiplyBy2(input) {
+    return input*2
+    
+}
+let resultt=copyArrayAndManipulate([1,2,3],multiplyBy2)
+console.log(resultt);
+//what is pair programming
+"when two partner programming in one computer . "
+//single thread
+"this refers to the  code execution one by one or line by line "
+//what is api
+"an api is a collection of function,method and classes that an application or operating system can use to perform tasks or interact with other software. and the purpose of api is . it enable different software systems to interact and share data , making it possible for applications to work together and leverage each other's functionalities. and its suits for simple applications  "
+//types of API
+"there are three types of api rest API, web API and soap API "
+"rest api= it stands for representaional state transfer. it provide the architectural style for building web services including web, mobile and applications rest is stands for https. and uses the http methods including get ,post,put,delete.etc., rest API is best use for building chat application like watsapp and many others like amazon , netflix etx  "
+"web api= it doesnt build structure like rest api. it helps to http,https,and tcp/ip to communicate and servers it helps for biulding application that require autjentification , authorization and security . so we can use this for when building apps thet require a highly secure and reliable method of exchanging data between applications"
+"soap api=it stands for simple object access protocol it used for exchanging strutured data. it provides many data types like text, number , dated and binary search "
+//open method
+"it creates the new window browser. it same like we open new window from file. so it returns the window object representing to the newly created window we can give url in .open(request type,API url, true) so url indicates the document to load into the window. if no url is specified, a new window with about: blank is opend like we want to load and create the window like index.html and next is name - it specifies name of the window, feature- it helps to give feature to the window like height width etc "
+//what is these request methods GET,put,post,patch and delete but the main is get and post
+"(get) is use for retrieve  data , web page, json and file through browser . like the best example of get and post is . when we open the facebook it will open through (get) request to the browser then we will watch the login names , passwords etc and the if we write the name and pasword correctly so the (post) request takes that resourse and gives to the facebook server .its like postman . and (put) update the whole block of resource like name , id ,username and (patch) update only sepecefic name or id. and (delete) will delete the resource"
+
+
+//all about asynchronous javascript
+//ready state 
+"it holds the status of the XMLhttprequest"
+"0: client has been created . open() not called yet"
+"1: open()has been called"
+"2: send() has been called, and header and status are available"
+"3: downloading responseText holds partial data"
+"4: the opertion is complete"
+//what is response text
+"the actual data we recieved from https request "
+//status
+"it checks and compiles the error in request if it shows 200 it means (ok) ,if it shows 400 it means (bad request something did wrong in request like syntext error etc) and  if it shows 404 it means (it cannot find the request that we sent or the page is not exist ) if it shows 500 it means client sent ok request but server dont know how to han"
+
+//http request
+function getTodo(callbacks) {
+    let request= new XMLHttpRequest();
+ request.addEventListener("readystatechange",(()=>{
+     if (request.readyState===4 && request.status==200) {
+        let data=JSON.parse(request.responseText)
+          callbacks(undefined,data)
+        
+     }else if (request.readyState==4) {
+        callbacks("it couldnt fetch the data",undefined)
+     }
+    console.log(typeof responseText); 
+ }))
+ request.open("GET","https://jsonplaceholder.typicode.com/todos/")
+ request.send()
+}
+getTodo((error,data)=>{
+ if (error) {
+    console.log("callbacks fired");
+ }else{
+   // console.log(data);
+ }
+})
+// in this (get) method  gives u the page and window of json file.
+function getTodo2(callbacks) {
+    let request= new XMLHttpRequest();
+ request.addEventListener("readystatechange",(()=>{
+     if (request.readyState===4 && request.status==200) {
+        let data=JSON.parse(request.responseText)
+          callbacks(undefined,data)
+        
+     }else if (request.readyState==4) {
+        callbacks("it couldnt fetch the data",undefined)
+     }
+ 
+ }))
+ request.open("GET","todos.json")
+ request.send()
+}
+getTodo2((error,data)=>{
+ if (error) {
+    console.log("callbacks fired");
+ }else{
+    console.log(data);
+ }
+})
+//so this is the example of how we will request files back to back in get method after one files request complete the request for another file in same request.
+function getTodo3(resource,callbacks) {
+    let request= new XMLHttpRequest();
+ request.addEventListener("readystatechange",(()=>{
+     if (request.readyState===4 && request.status==200) {
+        let data=JSON.parse(request.responseText)
+          callbacks(undefined,data)
+        
+     }else if (request.readyState===4) {
+        callbacks("it couldnt fetch the data",undefined)
+     }
+ 
+ }))
+ request.open("GET",resource)
+ request.send()
+}
+//these are call back hell so this is alternative way but the best way is promises we will learn after this
+getTodo3("todos3.json",(error,data)=>{
+ console.log(data); 
+ getTodo3("todos2.json",(error,data)=>{
+console.log(data);
+ } )  
+
+})
+
+//what is promises
+"promises have two inbuilt parameter (resolve,reject) reject use for when your request have been accept and then  we put data in resolve and the. it resolve finally so after we put then and put data in .(then) , and if our request rejected then we put error in reject . and then we put reject in .catch  "
+"example below"
+
+function promises(resource) {
+    return new Promise((resolve,reject)=>{
+
+    let request= new XMLHttpRequest();
+ request.addEventListener("readystatechange",(()=>{
+     if (request.readyState===4 && request.status==200) {
+        let data=JSON.parse(request.responseText)
+          resolve(data)
+        
+     }else if (request.readyState===4) {
+         reject("error getting resource")
+     }
+    
+ }))
+ request.open("GET",resource)
+ request.send()
+    })
+}
+promises("todos2.json").then((data)=>{
+       console.log("here is the data",data);
+}).catch((error)=>{
+      console.log("here is the error",error);
+})
+//chaining promisses
+"when we wants to execute  more than one requests in one time"
+function promises2(resource) {
+    return new Promise((resolve,reject)=>{
+
+    let request= new XMLHttpRequest();
+ request.addEventListener("readystatechange",(()=>{
+     if (request.readyState===4 && request.status==200) {
+        let data=JSON.parse(request.responseText)
+          resolve(data)
+        
+     }else if (request.readyState===4) {
+         reject("error getting resource")
+     }
+    
+ }))
+ request.open("GET",resource)
+ request.send()
+    })
+}
+promises2("todos2.json").then((data)=>{
+       console.log("here is the data",data);
+       return promises2("todos2.json").then((data)=>{
+          console.log("this is promise 2 data",data);
+       })
+})
+.catch((error)=>{
+      console.log("here is the error",error);
+})
+fetch("todos2.json").then((response)=>{
+    console.log("resolved",response);
+   return response.json()
+}).then((data)=>{
+    console.log(data);
+}).catch((error)=>{
+    console.log("rejected",err);
+})
+//real example of async and await and we have to write this in code all the time in future and before we learned before that assynchronoes codes that was like practice to understand this code
+"async doesnt block the code . before async and await released we put new promises function like new Promise(resole , reject) so it works same like async await works but it was complicated and hard to understand but asyn made promises easier it goes into background of api and takes the data async await says that run your code when we fetch the code succesfully or resolve then we will give u through.then()={} and when code rejected so it give u the error in .catch() method so when we use promises we put fetched data in resolve() and in async await we put fetched data in .then() and in old promises we put rejection error in reject() and in async await er put the rejection error in .catch()   "
+let promise4=async()=>{
+    let response=await fetch("todos2.json")
+     if (response.status!==200) {
+         throw new Error("cannot fetch")
+     }
+    let data= await response.json()
+    return data[0]
+    
+}
+promise4().then((data)=>{
+    console.log("resolved",data);
+}).catch((error)=>{
+   console.log("rejected");
+})
+//factory function
+"we will learn that ever u write object in function so first write return {object:value} exemple below"
+"when a function returns an object , we call it a factory function. it can produce object instance without new keyword or classes "
+function mobile1(mobile_no) {
+    return {model: mobile_no,
+            price:function(){
+                return "price is rs.3000"
+            }                 
+    }
+
+}
+let samsung=mobile1("galaxy")
+let nokia=mobile1("3310")
+console.log(`${samsung.model}${samsung.price()}`)
+
+console.log(`${nokia.model} ${nokia.price}`)
+//what is property,key and object
+
+ //name is key=>   name:"junaid" => junaid is value   and key:value =>property 
+
+
+//hasownproperty method
+if (nokia.hasOwnProperty("price")) {
+    console.log("available");
+}else{
+    console.log("doesnt exist")
+
+}
+//how javacript code execute
+"there are three execution context globle execution,memory phase and execution phase"
+ "here is the example below"
+ let val1=10
+ let val2=5
+
+ function addnum(num1,num2) {
+      let total = num1+num2
+      return total   
+ }
+ let result1=addnum(val1,val2)
+ let result2=addnum(15,2)
+
+//what memory phase take
+"val1=undefined "
+"val2=undefined "
+"addnum=defination "
+"result1=undefined "
+"result2=undefined "
+"after result1 execution  it takes val1=undefined , val2=undefined,total =undefined"
+//what execution phase take
+"it gives the value of all variable it runs like first it give value to val1=>10 then val2=>5 then it comes directly to where function call like result1=> addnum()then it executes the function and then it takes again memory phases and execution phase so what memory phase takes is upperiside in memoryphase and what execution phase takes is num1=>10,num2=>5,total=>15 and after this result1 executed funtion clean and vanish and then it run again when result2 call "
+//how js code run
+"it starts when we call function and first function goes into callstack then if any code line is feature of web api so callstack send that function to web api and the web api sends to the callback queue .if any promise feature  in web api which sent by callstack so that will send into microTask queue then event loop first give chance to the microtask queue  and when microtask  queue empty so event loop gives the chance to the callback queue and then event loop takes that function and then event loop send into callstack and when function fully executed so call back delete and pop that function and then it will delete the globle execution context (gec()) and the if we run again any function call so first (gec() comes in call stack then any function() comes "
+//what globle execution take
+"it takes total = 15 of result1 after this result1  executed function will delete then it execute again when result2 executes the function"
+//what is call stack
+"so when we call the function and so first global execution comes first in call stack then called function comes and then called function executing so during the execution function will stay in call stack and then when function returns or executed then function will pop (out) or delete to the callstack and then it comes again to the globle execution(ge) then it comes to the another function calles then repeat the criteria and the all function that we called in callstack exucuted and deleted from the callstack then globle execution context will also delete and pop from the call stack."
+//settimeout is the feature of?
+"settimeout is the feature of web API and get ,post,delete is also feature of web Api"
+//what is stack  and heap
+"heap is used for memory allocation and stack hold the execution context"
+//what is task queue(callback queue)
+"java script can execute one thing at a time so rest things are waiting in task queue. when we run setTimeout, web  api will run a timer from settimeout and when timer ends then web api push that function to the task queue then functions will push in the call stack where the function can execute and event loop pushes that function from the task queue to call stack. and task queue and call back queue is same "
+//what is event loop
+"event loop pushes the tasks from task queue to call stack. event loop is waiting when call stack empty and then it sends the function from the callback queue to callstack "
+//what is web api
+" basically web api is a bridge and we can communicate to the browser from web api . web api understand any language like java,js,c++ and it can commuicate us to the browser through thes languages .settimeout is the feature of web API and get ,post,delete is also feature of web Api, when we run setTimeout, web  api will run a timer from settimeout and when timer ends then web api push that function to the task queue . and when we fetch the data from another network server so web api is waiting and then when fetch takes the data succesfully from another  network server then web api gives that data to the task queue (callback)and then event loop gives that data to the call stack where function executes and web api have lots of other features like DOM API,fetch,localstorage , console and location so DOM API is like when we write document.get element by id,class and anything like (document.) is also a part of web api bcoz browser gives u the access from the another file and it works in web api and html script is alse a part of dom api and event listner is also a api feature when we put click event its called domApi and then it comes in web api with function and it waits to click that button and when the button clicked so it sends the function to the task queue (callback queue) and then event loop send this function from callback queue to callstack. "
+//what is dom api 
+"it define the functionality of each element in html when we document.get is also the feature of dom api bcoz it defines the html files element"
+//why do we need callback queue.
+"suppose when a person click the button 5 times so web api sends the function 5 times in callback queue and then when callstack empty one by one event loop sends the function to the call stack"
+//how is event listner works web api
+"first like we mentioned click event listner then it goes into web api and waiting for click when we click that function through the button so then that function will go in callback queue and event loop send in callstack "
+//what is microtask queue.
+"all promises function in web api will go in microtask queue and all settimeout and other api features apart from promises in web api that all will go in callback queue then event loops gives the first chance to the micro task like firstly it sends functions of micro task queue to callstack and then when microtask empty then it gives the chance to the call back queue and then event loop sends the callback queue functions to the call stack but if we run a javascript code or methods so they will executes and run first rather tha api feature bcoz when we call javascript function so the function directly goes in callstack end executes but if we wants to executes some web api feature so that function first go in callback queue and if function is promises so that function will go in micro task queue and event loops first sends the microtask function in call back and then event loops  sends the callback queue function in call stack so it takes time to execute than simple java scripy function.but if settimeout is 0 timer so this will run first than microtask"
+console.log("start");
+setTimeout(function CBT(){
+ console.log("cb SetTimout");
+},1220)
+wait=async()=>{
+   let response = await fetch("todos.json")
+   if (response.status!==200) {
+     throw new error("its not well")
+   }
+   let data=response.json()
+   return data
+}
+wait().then((data)=>{
+   console.log(data);
+}).catch((error)=>{
+   console.log(error);
+})
+console.log("end");
+function opm(a,b) {
+    return a+b
+    
+}
+console.log(opm(3,9))
+//async generator
+function* gen() {
+    yield fetch("todos.json")
+    yield fetch("todos2.json")
+    yield fetch("todos3.json")
+    
+}
+let nexti=gen()
+nexti.next().value.then((data)=>{
+    return data
+})
+nexti.next().value.then((data)=>{
+    return data
+})
+nexti.next().value.then((data)=>{
+     console.log("this is real data",data);
+})
+//iterator and how returns the object in function
+function iteratorReal(arr) {
+    indexNum=0;
+    return{
+       next:function () {
+        if (indexNum<arr.length) {
+         return{
+             value:arr[indexNum++],
+            done:false
+         }   
+          return{
+            done:true
+          }
+        }
+       }
+}
+}
+let number22=[1,2,34,5,6,66,9]
+let popq=iteratorReal(number22)
+popq.next()
+console.log(popq.next())
+
+function doWhenResceived(value) {
+    returnNextElement.next(value)
+    
+}
+function* createFlow() {
+    let data=yield fetch("todos.json")
+    return data.json()
+}
+let returnNextElement=createFlow()
+returnNextElement.next().value.then((data)=>{
+    console.log(data);
+})
+//what is bracket bracket notation
+"we have to use bracket notation when there is space in key like my name:khan example below"
+ let obj={
+    "my name":"khan",
+    "my-name":"gul khan"
+ }
+ console.log(obj["my name"]);
+ //what is dot notation
+ let user3={}
+ user3.name="junaid"
+ user3.score=5
+ user3.increment=function() {
+    user3.score++
+ }
+console.log(user3.name);
+console.log(user3["name"])// so this is ther example of bracket notation;
+//how to delete any property in onject
+let game={
+  score:5,
+  mumber:2345566
+
+}
+delete game.score
+console.log(game);
+//what is Object.create
+"when we know that nobody can change or manipulate that object then we create an object.create() and the nobody can change the data in object and cant  delete the data of object "
+let objj=Object.create({
+    name:"code",
+    id:"0909"
+
+})
+delete objj.ip
+console.log(objj);
+//this is another example
+function scoreCreater(name,score) {
+let door=Object.create(userFunctionStore)
+door.name=name;
+door.score=score
+return door
+}
+let userFunctionStore={
+    increment:function(){this.score++},
+    login:function(){console.log("you re loggedin");}
+}
+let user1=scoreCreater("phill",4)
+console.log(user1.login());
+//functions are both object and function
+"this function shows that functions are both objects and function like we dynamically stored property put in function like we put in object so we can put property by dot notation"
+function multiyply33(num) {
+    return num*2
+    
+}
+multiyply33.stored=2;
+console.log(multiyply33.stored);
+
+
+//what is Object.prototype
+"this is same as .__proto__= this is also attaches the two object"
+let teacher2={
+    class:"active"
+}
+let student={
+    class:"non Active"
+}
+let xq=Object.setPrototypeOf(teacher2,student)
+console.log(xq);
+//what is meaning of .call().method in js
+"it calls the other function"
+let st={
+    car:"kia",
+    forSale:function (town,city) {
+        return this
+        
+    }
+}
+let lt={
+    car:"long run"
+}
+let xf=st.forSale.call(lt)
+console.log(xf);
+//what is apply method
+"apply method is same as call but one difference is that we pass the array in arguement "
+let st1={
+    car:"kia",
+    forSale:function (town,city) {
+        return `${this.car}${town}${city}`
+        
+    }
+}
+let lt1={
+    car:"long run"
+}
+let xf1=st1.forSale.call(lt1,["jaipur","rangoli"])
+console.log(xf1);
+//super()
+"when we put super() extends parent in child so all parent keywords calls automatically in child constructor "
+class data3{
+    constructor(name){
+        this.name="junaid"
+
+
+    }
+}
+class datajr extends data3{
+    constructor(game){
+        super(name)
+        
+        this.game=game
+        
+    }
+}
+let yi=new datajr("gta")
+console.log(yi.name);
+   </script>
+
+    
+</body>
+</html>
